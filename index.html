@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your Mood</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-color: black;
+        color: white;
+        text-align: center;
+        padding-top: 100px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+    }
+    button {
+        background-color: white;
+        color: black;
+        padding: 20px 40px;
+        margin-top: 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 700;
+    }
+</style>
+</head>
+<body>
+    <div>ВЫБЕРИ СВОЕ НАСТРОЕНИЕ</div>
+    <div style="margin-top: 50px; float: left;">НАЖМИ ЕСЛИ ТЕБЕ ГРУСТНО</div>
+    <button id="playSad">SAD</button>
+    <div style="margin-top: 50px; float: right;">НАЖМИ ЕСЛИ ТЕБЕ ВЕСЕЛО</div>
+    <button id="playHappy">HAPPY</button>
+    <button id="stopButton" style="display:none;">STOP</button>
+    
+    <audio id="sadAudio" src="sad.mp3"></audio>
+    <audio id="happyAudio" src="happy.mp3"></audio>
+
+    <script>
+        const sadAudio = document.getElementById("sadAudio");
+        const happyAudio = document.getElementById("happyAudio");
+        const playSadButton = document.getElementById("playSad");
+        const playHappyButton = document.getElementById("playHappy");
+        const stopButton = document.getElementById("stopButton");
+        
+        playSadButton.addEventListener("click", () => {
+            sadAudio.play();
+            stopButton.style.display = "inline-block";
+        });
+
+        playHappyButton.addEventListener("click", () => {
+            happyAudio.play();
+            stopButton.style.display = "inline-block";
+        });
+
+        stopButton.addEventListener("click", () => {
+            sadAudio.pause();
+            happyAudio.pause();
+            stopButton.style.display = "none";
+        });
+    </script>
+</body>
+</html>
